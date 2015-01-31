@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en">
+<head>
+    <title>Spring Boot JSP Sample</title>
+</head>
 <body>
 <c:url value="/resources/text.txt" var="url" />
 <spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />

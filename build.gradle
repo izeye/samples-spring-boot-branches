@@ -39,6 +39,7 @@ dependencies {
     compile("org.apache.tomcat.embed:tomcat-embed-jasper")
 
     compile("javax.servlet:jstl")
+    compile("org.sitemesh:sitemesh:3.0.0")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
