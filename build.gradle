@@ -34,7 +34,11 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+
+    compile("javax.servlet:jstl")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
