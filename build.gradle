@@ -35,6 +35,7 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     compile("org.apache.tomcat.embed:tomcat-embed-jasper")
 

@@ -23,4 +23,9 @@ public class WelcomeController {
 		return "welcome";
 	}
 
+	@RequestMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+
 }
