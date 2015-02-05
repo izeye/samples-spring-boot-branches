@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
     }
 }
 
@@ -35,6 +35,14 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
+
+    compile("de.codecentric:spring-boot-admin-server:1.1.1") {
+        exclude module: "jquery"
+        exclude module: "angularjs"
+    }
+
+    compile("org.webjars:jquery:1.11.0")
+    compile("org.webjars:angularjs:1.2.12")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
