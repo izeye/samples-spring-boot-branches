@@ -35,6 +35,9 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-security")
+
+    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity3")
 
     compile("net.sourceforge.nekohtml:nekohtml:1.9.21")
 

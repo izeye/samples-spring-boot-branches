@@ -4,5 +4,9 @@
 <div attribute-without-value>
     This is a Thymeleaf test.
 </div>
+
+<div sec:authorize="isAuthenticated()">
+    This content is only shown when authenticated.
+</div>
 </body>
 </html>
