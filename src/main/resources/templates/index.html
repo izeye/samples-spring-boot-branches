@@ -4,5 +4,10 @@
 <div attribute-without-value>
     This is a Thymeleaf test.
 </div>
+
+<div th:switch="${name}">
+    <p th:case="null">N/A</p>
+    <p th:case="*" th:inline="text">Your name is [[${name}]].</p>
+</div>
 </body>
 </html>
