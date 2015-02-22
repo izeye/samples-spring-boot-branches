@@ -1,5 +1,3 @@
-DROP TABLE person;
-
 CREATE TABLE person (
   id INT,
   first_name VARCHAR(100),

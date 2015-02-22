@@ -36,7 +36,7 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-jdbc")
 
-    compile("mysql:mysql-connector-java")
+    compile("org.hsqldb:hsqldb")
 
     compile("org.mybatis:mybatis-spring:1.2.2")
     compile("org.mybatis:mybatis:3.2.8")

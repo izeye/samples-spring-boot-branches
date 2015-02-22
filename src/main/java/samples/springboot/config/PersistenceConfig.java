@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import javax.sql.DataSource;
 
@@ -15,6 +16,7 @@ import javax.sql.DataSource;
  * Created by izeye on 15. 2. 22..
  */
 @Configuration
+@Lazy
 @EnableConfigurationProperties(MyBatisProperties.class)
 public class PersistenceConfig {
 
