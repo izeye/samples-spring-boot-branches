@@ -15,7 +15,7 @@ import java.util.List;
 public class MyBatisPersonRepository implements PersonRepository {
 
 	@Autowired
-	@Lazy
+//	@Lazy
 	private SqlSession sqlSession;
 
 	@Override

@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * Created by izeye on 15. 2. 22..
  */
 @Configuration
-@Lazy
+//@Lazy
 @EnableConfigurationProperties(MyBatisProperties.class)
 public class PersistenceConfig {
 
