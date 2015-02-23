@@ -19,7 +19,7 @@ function start() {
 
     echo "Starting ${PROGRAM_NAME}..."
 
-    java -jar $JAR_PATH > $PROGRAM_OUTPUT_FILE 2>&1 &
+    java -jar $JAR_PATH >> $PROGRAM_OUTPUT_FILE 2>&1 &
 }
 
 function stop() {
