@@ -2,14 +2,12 @@ package samples.springboot;
 
 import de.codecentric.boot.admin.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Created by izeye on 15. 1. 31..
  */
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 @EnableAdminServer
 public class Application {
 
