@@ -11,6 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAdminServer
 public class Application {
 
+	static {
+		System.setProperty("spring.boot.admin.url", "http://localhost:18080");
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
