@@ -36,13 +36,8 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
 
-    compile("de.codecentric:spring-boot-admin-server:1.1.1") {
-        exclude module: "jquery"
-        exclude module: "angularjs"
-    }
-
-    compile("org.webjars:jquery:1.11.0")
-    compile("org.webjars:angularjs:1.2.12")
+    compile("de.codecentric:spring-boot-admin-server:1.1.2")
+    compile("de.codecentric:spring-boot-admin-server-ui:1.1.2")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
