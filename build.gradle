@@ -34,7 +34,10 @@ repositories {
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-jersey")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    compile("org.springframework:spring-webmvc")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
