@@ -36,5 +36,7 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
+    compile("ch.qos.logback:logback-access:1.1.2")
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
