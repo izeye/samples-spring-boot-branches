@@ -15,11 +15,7 @@ public class Application {
 		application.addListeners(new ApplicationPidFileWriter());
 		application.run(args);
 
-		try {
-			Thread.sleep(Integer.MAX_VALUE);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		System.out.println(new Person("Johnny", 35));
 	}
 
 }

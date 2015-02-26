@@ -36,5 +36,7 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
+    compile("org.projectlombok:lombok:1.16.2")
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
