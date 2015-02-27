@@ -4,11 +4,13 @@ buildscript {
         maven { url "http://repo.spring.io/snapshot" }
         maven { url "http://repo.spring.io/libs-milestone" }
         maven { url "http://repo.spring.io/libs-release" }
+        maven { url 'http://repo.spring.io/plugins-release' }
         mavenLocal()
     }
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+        classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
     }
 }
 
@@ -16,6 +18,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'propdeps'
 
 jar {
     baseName = 'samples-spring-boot-branches'
@@ -36,7 +39,7 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
-    compile("org.projectlombok:lombok:1.16.2")
+    provided("org.projectlombok:lombok:1.16.2")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
