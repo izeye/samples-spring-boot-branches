@@ -9,6 +9,8 @@ buildscript {
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+
+        classpath("io.spring.gradle:dependency-management-plugin:0.4.0.RELEASE")
     }
 }
 
@@ -16,6 +18,8 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'maven-publish'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
     baseName = 'samples-spring-boot-branches'
@@ -37,4 +41,22 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.izeye'
+            artifactId 'samples-spring-boot-branches'
+            version '1.0.0'
+
+            from components.java
+        }
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:1.2.2.RELEASE'
+    }
 }
