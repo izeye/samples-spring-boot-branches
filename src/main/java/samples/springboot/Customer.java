@@ -1,5 +1,8 @@
 package samples.springboot;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +16,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 
@@ -25,11 +28,15 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	protected void setId(long id) {
+	public Long getCustomerId() {
+		return getId();
+	}
+
+	protected void setId(Long id) {
 		this.id = id;
 	}
 

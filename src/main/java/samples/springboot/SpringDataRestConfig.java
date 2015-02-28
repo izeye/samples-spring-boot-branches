@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 /**
  * Created by izeye on 15. 2. 27..
  */
-@Configuration
+//@Configuration
 public class SpringDataRestConfig extends SpringBootRepositoryRestMvcConfiguration {
 
 	@Override
