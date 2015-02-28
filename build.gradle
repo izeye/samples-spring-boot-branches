@@ -47,8 +47,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId 'com.izeye'
-            artifactId 'samples-spring-boot-branches'
-            version '1.0.0'
+            artifactId "$jar.baseName"
+            version "$jar.version"
 
             from components.java
         }
