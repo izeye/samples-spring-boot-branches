@@ -39,3 +39,10 @@ dependencies {
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+//        html.enabled = true // enabled by default
+    }
+}
