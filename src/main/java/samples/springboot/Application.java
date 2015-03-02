@@ -23,7 +23,9 @@ public class Application {
 		return new ApplicationListener<ApplicationEvent>() {
 			@Override
 			public void onApplicationEvent(ApplicationEvent event) {
-				System.out.println("ApplicationEvent: " + event.getClass().getSimpleName());
+				System.out.println(
+						"ApplicationEvent: " + event.getClass().getSimpleName()
+						+ " from " + event.getSource());
 			}
 		};
 	}
@@ -33,8 +35,10 @@ public class Application {
 		return new ApplicationListener<EmbeddedServletContainerInitializedEvent>() {
 			@Override
 			public void onApplicationEvent(EmbeddedServletContainerInitializedEvent event) {
-				System.out.println("EmbeddedServletContainerInitializedEvent: "
-						+ event.getClass().getSimpleName());
+				System.out.println(
+						"EmbeddedServletContainerInitializedEvent: "
+						+ event.getClass().getSimpleName()
+						+ " from " + event.getSource());
 			}
 		};
 	}
@@ -44,7 +48,9 @@ public class Application {
 		return new ApplicationListener<ContextClosedEvent>() {
 			@Override
 			public void onApplicationEvent(ContextClosedEvent event) {
-				System.out.println("ContextClosedEvent: " + event.getClass().getSimpleName());
+				System.out.println(
+						"ContextClosedEvent: " + event.getClass().getSimpleName()
+						+ " from " + event.getSource());
 			}
 		};
 	}
@@ -64,7 +70,9 @@ public class Application {
 		application.addListeners(new ApplicationListener<SpringApplicationEvent>() {
 			@Override
 			public void onApplicationEvent(SpringApplicationEvent event) {
-				System.out.println("SpringApplicationEvent: " + event.getClass().getSimpleName());
+				System.out.println(
+						"SpringApplicationEvent: " + event.getClass().getSimpleName()
+						+ " from " + event.getSource());
 			}
 		});
 		application.run(args);
