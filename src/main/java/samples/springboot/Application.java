@@ -14,12 +14,6 @@ public class Application {
 		SpringApplication application = new SpringApplication(Application.class);
 		application.addListeners(new ApplicationPidFileWriter());
 		application.run(args);
-
-		try {
-			Thread.sleep(Integer.MAX_VALUE);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

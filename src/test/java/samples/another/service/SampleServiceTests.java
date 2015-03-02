@@ -1,11 +1,11 @@
-package samples.springboot;
+package samples.another.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import samples.another.autoconfigure.SampleAutoConfiguration;
+import samples.springboot.Application;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -13,18 +13,18 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
 
 /**
- * Created by izeye on 15. 2. 28..
+ * Created by izeye on 15. 3. 2..
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class ApplicationTests {
+public class SampleServiceTests {
 
 	@Autowired
-	SampleAutoConfiguration sampleAutoConfiguration;
+	SampleService sampleService;
 
 	@Test
 	public void test() {
-		assertThat(sampleAutoConfiguration, is(not(nullValue())));
+		assertThat(sampleService, is(not(nullValue())));
 	}
 
 }
