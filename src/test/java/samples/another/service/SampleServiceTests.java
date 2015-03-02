@@ -3,6 +3,7 @@ package samples.another.service;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import samples.springboot.Application;
@@ -25,6 +26,7 @@ public class SampleServiceTests {
 	@Test
 	public void test() {
 		assertThat(sampleService, is(not(nullValue())));
+		assertThat(sampleService.getValue(), is("someValue"));
 	}
 
 }
