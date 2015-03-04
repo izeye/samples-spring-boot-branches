@@ -10,6 +10,8 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
         classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
+        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.2")
+        classpath("org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6")
     }
 }
 
@@ -19,6 +21,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'org.asciidoctor.convert'
 
 jar {
     baseName = 'samples-spring-boot-branches'
@@ -47,4 +50,8 @@ jacocoTestReport {
         xml.enabled = true // coveralls plugin depends on xml format report
 //        html.enabled = true // enabled by default
     }
+}
+
+asciidoctor {
+    backends = ['html5', 'pdf']
 }
