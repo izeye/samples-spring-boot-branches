@@ -1,13 +1,20 @@
 package samples.springboot.repository;
 
+import org.apache.commons.io.IOUtils;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.ResourceUtils;
 import samples.springboot.Application;
 import samples.springboot.domain.Customer;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,6 +26,16 @@ public class CustomerRepositoryTests {
 
 	@Autowired
 	CustomerRepository customerRepository;
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+
+	@Before
+	public void setUp() throws IOException {
+		File file = ResourceUtils.getFile("classpath:schema-h2.sql");
+		String sql = IOUtils.toString(new FileReader(file));
+		jdbcTemplate.update(sql);
+	}
 
 	@Test
 	public void test() {
