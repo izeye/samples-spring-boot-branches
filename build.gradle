@@ -9,6 +9,7 @@ buildscript {
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+        classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
     }
 }
 
@@ -16,6 +17,8 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 jar {
     baseName = 'samples-spring-boot-branches'
@@ -41,4 +44,11 @@ dependencies {
     compile("org.apache.derby:derby:10.11.1.1")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+//        html.enabled = true // enabled by default
+    }
 }
