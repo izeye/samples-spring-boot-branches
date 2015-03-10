@@ -3,6 +3,7 @@ package samples.springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.system.ApplicationPidFileWriter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Created by izeye on 15. 1. 31..
@@ -10,10 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
+	@Bean
+	public ApplicationPidFileWriter applicationPidFileWriter() {
+		return new ApplicationPidFileWriter();
+	}
+
 	public static void main(String[] args) {
-		SpringApplication application = new SpringApplication(Application.class);
-		application.addListeners(new ApplicationPidFileWriter());
-		application.run(args);
+		SpringApplication.run(Application.class, args);
 
 		try {
 			Thread.sleep(Integer.MAX_VALUE);
