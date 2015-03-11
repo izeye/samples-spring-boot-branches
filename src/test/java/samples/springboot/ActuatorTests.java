@@ -3,7 +3,6 @@ package samples.springboot;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.Status;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
@@ -28,13 +27,31 @@ public class ActuatorTests {
 
 	@Test
 	public void test() {
-		// Health has no default constructor.
-//		Health health = restTemplate.getForObject(
-//				"http://localhost:{port}/management/health", Health.class, port);
-//		assertThat(health.getStatus(), is(Status.UP));
-		Health.Builder health = restTemplate.getForObject(
-				"http://localhost:{port}/management/health", Health.Builder.class, port);
-		assertThat(health.build().getStatus(), is(Status.UNKNOWN));
+		// NOTE:
+		// I CAN NOT reuse `Health` in Actuator
+		// because `Health` has no default constructor.
+		Health health = restTemplate.getForObject(
+				"http://localhost:{port}/management/health", Health.class, port);
+		assertThat(health.getStatus(), is(Status.UP));
+	}
+
+	static class Health {
+		private Status status;
+
+		public Status getStatus() {
+			return status;
+		}
+
+		public void setStatus(Status status) {
+			this.status = status;
+		}
+
+		@Override
+		public String toString() {
+			return "Health{" +
+					"status=" + status +
+					'}';
+		}
 	}
 
 }
