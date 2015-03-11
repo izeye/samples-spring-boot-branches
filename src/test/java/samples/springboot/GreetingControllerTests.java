@@ -59,13 +59,11 @@ public class GreetingControllerTests {
 		HttpEntity<Void> request = new HttpEntity<Void>(httpHeaders);
 		ResponseEntity<Greeting> response = restTemplate.exchange(
 				"http://localhost:{port}/greeting", HttpMethod.GET, request, Greeting.class, port);
-		assertThat(response.getBody().getId(), is(1L));
 		assertThat(response.getBody().getContent(), is("Hello, World!"));
 
 		response = restTemplate.exchange(
 				"http://localhost:{port}/greeting?name=Johnny",
 				HttpMethod.GET, request, Greeting.class, port);
-		assertThat(response.getBody().getId(), is(2L));
 		assertThat(response.getBody().getContent(), is("Hello, Johnny!"));
 	}
 
@@ -73,12 +71,10 @@ public class GreetingControllerTests {
 	public void testWithTestRestTemplate() throws UnsupportedEncodingException {
 		Greeting greeting = testRestTemplate.getForObject(
 				"http://localhost:{port}/greeting", Greeting.class, port);
-		assertThat(greeting.getId(), is(1L));
 		assertThat(greeting.getContent(), is("Hello, World!"));
 
 		greeting = testRestTemplate.getForObject(
 				"http://localhost:{port}/greeting?name=Johnny", Greeting.class, port);
-		assertThat(greeting.getId(), is(2L));
 		assertThat(greeting.getContent(), is("Hello, Johnny!"));
 	}
 
