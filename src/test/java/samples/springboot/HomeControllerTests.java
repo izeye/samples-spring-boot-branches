@@ -19,15 +19,27 @@ import static org.hamcrest.core.Is.is;
 @WebIntegrationTest(randomPort = true)
 public class HomeControllerTests extends DummyTrustManagerSupport {
 
+	@Value("${http.port}")
+	int httpPort;
+
 	@Value("${local.server.port}")
-	int port;
+	int httpsPort;
 
 	RestTemplate restTemplate = new RestTemplate();
 
 	@Test
-	public void test() {
+	public void testHttp() {
+		test("http", httpPort);
+	}
+
+	@Test
+	public void testHttps() {
+		test("https", httpsPort);
+	}
+
+	private void test(String scheme, int port) {
 		String response = restTemplate.getForObject(
-				"https://localhost:{port}/", String.class, port);
+				"{scheme}://localhost:{port}/", String.class, scheme, port);
 		assertThat(response, is("Hello World!"));
 	}
 
