@@ -17,7 +17,7 @@ import static org.hamcrest.core.Is.is;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebIntegrationTest(randomPort = true)
-public class HomeControllerTests {
+public class HomeControllerTests extends DummyTrustManagerSupport {
 
 	@Value("${local.server.port}")
 	int port;
@@ -27,7 +27,7 @@ public class HomeControllerTests {
 	@Test
 	public void test() {
 		String response = restTemplate.getForObject(
-				"http://localhost:{port}/", String.class, port);
+				"https://localhost:{port}/", String.class, port);
 		assertThat(response, is("Hello World!"));
 	}
 
