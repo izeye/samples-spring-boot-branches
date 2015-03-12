@@ -31,4 +31,11 @@ public class HomeControllerTests extends DummyTrustManagerSupport {
 		assertThat(response, is("Hello World!"));
 	}
 
+	@Test
+	public void testWithUnmatchedCn() {
+		String response = restTemplate.getForObject(
+				"https://127.0.0.1:{port}/", String.class, port);
+		assertThat(response, is("Hello World!"));
+	}
+
 }
