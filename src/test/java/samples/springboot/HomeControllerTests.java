@@ -17,18 +17,18 @@ import static org.hamcrest.core.StringContains.containsString;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest
+@WebIntegrationTest(randomPort = true)
 public class HomeControllerTests {
 
-	@Value("${server.port}")
-	int serverPort;
+	@Value("${local.server.port}")
+	int port;
 
 	RestTemplate restTemplate = new TestRestTemplate();
 
 	@Test
 	public void test() {
 		String response = restTemplate.getForObject(
-				"http://localhost:{serverPort}/", String.class, serverPort);
+				"http://localhost:{port}/", String.class, port);
 		assertThat(response, containsString("Johnny"));
 	}
 
