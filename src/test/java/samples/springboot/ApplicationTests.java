@@ -31,6 +31,9 @@ public class ApplicationTests {
 	@Autowired
 	AsyncAnnotationBeanPostProcessor asyncAnnotationBeanPostProcessor;
 
+	@Autowired
+	ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
 	@Test
 	public void test() {
 		for (String beanDefinitionName : applicationContext.getBeanDefinitionNames()) {
@@ -49,6 +52,14 @@ public class ApplicationTests {
 		Object advice = ReflectionTestUtils.getField(advisor, "advice");
 		Object defaultExecutor = ReflectionTestUtils.getField(advice, "defaultExecutor");
 		assertThat(defaultExecutor, is(instanceOf(ThreadPoolTaskExecutor.class)));
+	}
+
+	@Test
+	public void testThreadPoolTaskExecutor() {
+		assertThat(threadPoolTaskExecutor.getCorePoolSize(), is(100));
+		assertThat(threadPoolTaskExecutor.getMaxPoolSize(), is(200));
+		assertThat(threadPoolTaskExecutor.getKeepAliveSeconds(), is(60));
+		assertThat(ReflectionTestUtils.getField(threadPoolTaskExecutor, "queueCapacity"), is(100));
 	}
 
 }
