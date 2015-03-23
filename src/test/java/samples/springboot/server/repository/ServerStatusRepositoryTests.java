@@ -46,4 +46,32 @@ public class ServerStatusRepositoryTests {
 		assertThat(found.getCollectedTime(), is(not(nullValue())));
 	}
 
+	@Test
+	public void testLatestServerStatus() {
+		Server server = DummyFactory.getServer();
+		serverRepository.save(server);
+
+		ServerStatus serverStatus = new ServerStatus();
+		serverStatus.setServer(server);
+		serverStatus.setAlive(true);
+		serverStatusRepository.save(serverStatus);
+
+		server.setLatestStatus(serverStatus);
+		serverRepository.save(server);
+
+		Server foundServer = serverRepository.findOne(server.getId());
+		assertThat(foundServer.getLatestStatus(), is(serverStatus));
+
+		serverStatus = new ServerStatus();
+		serverStatus.setServer(server);
+		serverStatus.setAlive(false);
+		serverStatusRepository.save(serverStatus);
+
+		server.setLatestStatus(serverStatus);
+		serverRepository.save(server);
+
+		foundServer = serverRepository.findOne(server.getId());
+		assertThat(foundServer.getLatestStatus(), is(serverStatus));
+	}
+
 }

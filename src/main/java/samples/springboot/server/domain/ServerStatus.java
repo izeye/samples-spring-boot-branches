@@ -1,6 +1,8 @@
 package samples.springboot.server.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,8 @@ import java.util.Date;
  */
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "collectedTime")
+@ToString(exclude = "server")
 public class ServerStatus {
 
 	@Id
