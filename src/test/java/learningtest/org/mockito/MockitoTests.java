@@ -7,6 +7,8 @@ import static org.hamcrest.core.Is.is;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -35,6 +37,14 @@ public class MockitoTests {
 		Person person = mock(Person.class);
 		doThrow(new RuntimeException()).when(person).setName(anyString());
 		person.setName(name);
+	}
+
+	@Test
+	public void testVerify() {
+		Person person = mock(Person.class);
+		person.getName();
+		person.getName();
+		verify(person, times(2)).getName();
 	}
 
 	class Person {
