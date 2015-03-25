@@ -1,4 +1,4 @@
-package learningtestjava.io;
+package learningtest.java.io;
 
 import org.junit.Test;
 
