@@ -38,7 +38,11 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    
+    compile("org.springframework:spring-context-support")
 
+    compile("net.sf.ehcache:ehcache:2.9.1")
+    
     compile("commons-io:commons-io:2.4")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
