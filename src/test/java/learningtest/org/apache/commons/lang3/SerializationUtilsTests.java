@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.Serializable;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -27,10 +28,10 @@ public class SerializationUtilsTests {
 		assertTrue(clonedPersons[1][0].equals(persons[1][0]));
 		assertTrue(clonedPersons[1][1].equals(persons[1][1]));
 		
-		assertTrue(clonedPersons[0][0] != persons[0][0]);
-		assertTrue(clonedPersons[0][1] != persons[0][1]);
-		assertTrue(clonedPersons[1][0] != persons[1][0]);
-		assertTrue(clonedPersons[1][1] != persons[1][1]);
+		assertFalse(clonedPersons[0][0] == persons[0][0]);
+		assertFalse(clonedPersons[0][1] == persons[0][1]);
+		assertFalse(clonedPersons[1][0] == persons[1][0]);
+		assertFalse(clonedPersons[1][1] == persons[1][1]);
 	}
 	
 	static class Person implements Serializable {
