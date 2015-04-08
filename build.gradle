@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
         classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
     }
 }
@@ -38,6 +38,8 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    compile("org.codehaus.janino:janino")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
