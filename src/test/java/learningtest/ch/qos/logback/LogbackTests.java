@@ -23,5 +23,14 @@ public class LogbackTests {
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
 		StatusPrinter.print(lc);
 	}
+	
+	@Test
+	public void testFilters() {
+		logger.trace("This is a message having trace level.");
+		logger.debug("This is a message having debug level.");
+		logger.info("This is a message having info level.");
+		logger.warn("This is a message having warn level.");
+		logger.error("This is a message having error level.");
+	}
 
 }
