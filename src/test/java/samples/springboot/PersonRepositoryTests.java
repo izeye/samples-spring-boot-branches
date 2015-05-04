@@ -1,5 +1,6 @@
 package samples.springboot;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class PersonRepositoryTests {
 	PersonRepository personRepository;
 
 	@Test
+	@Ignore
 	public void test() {
 		List<Person> persons = personRepository.findAll();
 		System.out.println(persons);
