@@ -1,5 +1,6 @@
 package samples.springboot;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class PersonRepositoryTests {
 	PersonRepository personRepository;
 
 	@Test
+	@Ignore
 	public void testFindAll() {
 		List<Person> persons = personRepository.findAll();
 		System.out.println(persons);
@@ -32,6 +34,7 @@ public class PersonRepositoryTests {
 	}
 
 	@Test
+	@Ignore
 	public void testFindAllComplexPersonsWithResultType() {
 		List<ComplexPerson> persons = personRepository.findAllComplexPersonsWithResultType();
 		System.out.println(persons);
@@ -39,6 +42,7 @@ public class PersonRepositoryTests {
 	}
 
 	@Test
+	@Ignore
 	public void testFindAllComplexPersonsWithResultMap() {
 		List<ComplexPerson> persons = personRepository.findAllComplexPersonsWithResultMap();
 		System.out.println(persons);
@@ -46,6 +50,7 @@ public class PersonRepositoryTests {
 	}
 
 	@Test
+	@Ignore
 	public void testFindAllComplexPersonsWithResultMapAndAssociation() {
 		List<ComplexPerson> persons = personRepository.findAllComplexPersonsWithResultMapAndAssociation();
 		System.out.println(persons);
