@@ -3,6 +3,7 @@ package samples.springboot.repository;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import samples.springboot.domain.ComplexPerson;
 import samples.springboot.domain.Person;
 
 import java.util.List;
@@ -20,6 +21,24 @@ public class MyBatisPersonRepository implements PersonRepository {
 	public List<Person> findAll() {
 		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
 		return mapper.findAll();
+	}
+
+	@Override
+	public List<ComplexPerson> findAllComplexPersonsWithResultType() {
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		return mapper.findAllComplexPersonsWithResultType();
+	}
+
+	@Override
+	public List<ComplexPerson> findAllComplexPersonsWithResultMap() {
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		return mapper.findAllComplexPersonsWithResultMap();
+	}
+
+	@Override
+	public List<ComplexPerson> findAllComplexPersonsWithResultMapAndAssociation() {
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		return mapper.findAllComplexPersonsWithResultMapAndAssociation();
 	}
 
 }

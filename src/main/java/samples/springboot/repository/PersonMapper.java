@@ -1,5 +1,6 @@
 package samples.springboot.repository;
 
+import samples.springboot.domain.ComplexPerson;
 import samples.springboot.domain.Person;
 
 import java.util.List;
@@ -10,5 +11,11 @@ import java.util.List;
 public interface PersonMapper {
 
 	List<Person> findAll();
+
+	List<ComplexPerson> findAllComplexPersonsWithResultType();
+
+	List<ComplexPerson> findAllComplexPersonsWithResultMap();
+
+	List<ComplexPerson> findAllComplexPersonsWithResultMapAndAssociation();
 
 }
