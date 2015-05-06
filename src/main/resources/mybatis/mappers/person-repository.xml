@@ -16,6 +16,7 @@
     </select>
 
     <resultMap id="complexPersonWithResultMapAndAssociation" type="ComplexPerson">
+        <id column="id" property="id" />
         <association property="name" javaType="samples.springboot.domain.PersonName" autoMapping="true" />
     </resultMap>
     <select id="findAllComplexPersonsWithResultMapAndAssociation" resultMap="complexPersonWithResultMapAndAssociation">
