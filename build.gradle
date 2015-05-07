@@ -9,6 +9,7 @@ buildscript {
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        classpath("org.ajoberstar:gradle-git:1.1.0")
         classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
     }
 }
@@ -20,12 +21,18 @@ apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
+import org.ajoberstar.grgit.operation.*
+
+def openOp = new OpenOp()
+openOp.setDir('.')
+ext.repo = openOp.call()
+
 description=thisProjectDescription
-version=thisProjectVersion
+version="$thisProjectVersion-${repo.head().abbreviatedId}"
 
 jar {
     baseName = project.name
-    version = project.version
+    version = thisProjectVersion
 }
 
 sourceCompatibility = 1.8
