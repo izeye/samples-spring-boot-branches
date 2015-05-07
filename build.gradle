@@ -62,9 +62,9 @@ task generateGitProperties {
 
         def repo = openOp.call()
         def headCommit = repo.head()
-        ext.gitBranch = repo.branch.current.name
-        ext.gitCommitId = headCommit.abbreviatedId
-        ext.gitCommitTime = new Date(headCommit.time * 1000L).format("yyyy-MM-dd'T'HH:mm:ssZ")
+        def gitBranch = repo.branch.current.name
+        def gitCommitId = headCommit.abbreviatedId
+        def gitCommitTime = new Date(headCommit.time * 1000L).format("yyyy-MM-dd'T'HH:mm:ssZ")
         
         File resourcesMainDir = new File(project.buildDir, 'resources/main')
         File gitPropertiesFile = new File(resourcesMainDir, 'git.properties')
