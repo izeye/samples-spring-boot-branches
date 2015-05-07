@@ -1,3 +1,5 @@
+import org.ajoberstar.grgit.operation.OpenOp
+
 buildscript {
     repositories {
         jcenter()
@@ -21,18 +23,14 @@ apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
-import org.ajoberstar.grgit.operation.*
-
-def openOp = new OpenOp()
-openOp.setDir('.')
-ext.repo = openOp.call()
-
 description=thisProjectDescription
-version="$thisProjectVersion-${repo.head().abbreviatedId}"
+version=thisProjectVersion
+
+ext.buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 
 jar {
     baseName = project.name
-    version = thisProjectVersion
+    version = project.version
 }
 
 sourceCompatibility = 1.8
@@ -57,9 +55,31 @@ processResources {
     expand(project.properties)
 }
 
+task generateGitProperties {
+    doLast {
+        def openOp = new OpenOp()
+        openOp.setDir('.')
+
+        def repo = openOp.call()
+        def headCommit = repo.head()
+        ext.gitBranch = repo.branch.current.name
+        ext.gitCommitId = headCommit.abbreviatedId
+        ext.gitCommitTime = new Date(headCommit.time * 1000L).format("yyyy-MM-dd'T'HH:mm:ssZ")
+        
+        File resourcesMainDir = new File(project.buildDir, 'resources/main')
+        File gitPropertiesFile = new File(resourcesMainDir, 'git.properties')
+        gitPropertiesFile.text = """git.branch=${gitBranch}
+git.commit.id=${gitCommitId}
+git.commit.time=${gitCommitTime}
+"""
+    }
+}
+
 jacocoTestReport {
     reports {
         xml.enabled = true // coveralls plugin depends on xml format report
 //        html.enabled = true // enabled by default
     }
 }
+
+project.tasks.jar.dependsOn('generateGitProperties')
