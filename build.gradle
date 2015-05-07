@@ -20,9 +20,12 @@ apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
+description=thisProjectDescription
+version=thisProjectVersion
+
 jar {
-    baseName = 'samples-spring-boot-branches'
-    version = '1.0.0'
+    baseName = project.name
+    version = project.version
 }
 
 sourceCompatibility = 1.8
@@ -41,6 +44,10 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+processResources {
+    expand(project.properties)
 }
 
 jacocoTestReport {
