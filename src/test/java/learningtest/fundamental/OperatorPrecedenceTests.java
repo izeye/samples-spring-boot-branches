@@ -1,4 +1,4 @@
-package learningtest.java.lang;
+package learningtest.fundamental;
 
 import org.junit.Test;
 
