@@ -16,6 +16,8 @@ public interface PersonMapper {
 
 	List<ComplexPerson> findAllComplexPersonsWithResultMap();
 
-	List<ComplexPerson> findAllComplexPersonsWithResultMapAndAssociation();
+	List<ComplexPerson> findAllComplexPersonsWithResultMapHavingIdAndAssociation();
+
+	List<ComplexPerson> findAllComplexPersonsWithResultMapHavingResultAndAssociation();
 
 }

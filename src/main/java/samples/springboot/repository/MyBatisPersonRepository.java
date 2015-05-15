@@ -36,9 +36,15 @@ public class MyBatisPersonRepository implements PersonRepository {
 	}
 
 	@Override
-	public List<ComplexPerson> findAllComplexPersonsWithResultMapAndAssociation() {
+	public List<ComplexPerson> findAllComplexPersonsWithResultMapHavingIdAndAssociation() {
 		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
-		return mapper.findAllComplexPersonsWithResultMapAndAssociation();
+		return mapper.findAllComplexPersonsWithResultMapHavingIdAndAssociation();
+	}
+
+	@Override
+	public List<ComplexPerson> findAllComplexPersonsWithResultMapHavingResultAndAssociation() {
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		return mapper.findAllComplexPersonsWithResultMapHavingResultAndAssociation();
 	}
 
 }

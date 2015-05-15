@@ -15,11 +15,21 @@
         SELECT * FROM person
     </select>
 
-    <resultMap id="complexPersonWithResultMapAndAssociation" type="ComplexPerson">
+    <resultMap id="complexPersonWithResultMapHavingIdAndAssociation" type="ComplexPerson" autoMapping="true">
         <id column="id" property="id" />
         <association property="name" javaType="samples.springboot.domain.PersonName" autoMapping="true" />
     </resultMap>
-    <select id="findAllComplexPersonsWithResultMapAndAssociation" resultMap="complexPersonWithResultMapAndAssociation">
+    <select id="findAllComplexPersonsWithResultMapHavingIdAndAssociation"
+            resultMap="complexPersonWithResultMapHavingIdAndAssociation">
+        SELECT * FROM person
+    </select>
+
+    <resultMap id="complexPersonWithResultMapHavingResultAndAssociation" type="ComplexPerson">
+        <result column="age" property="age" />
+        <association property="name" javaType="samples.springboot.domain.PersonName" autoMapping="true" />
+    </resultMap>
+    <select id="findAllComplexPersonsWithResultMapHavingResultAndAssociation"
+            resultMap="complexPersonWithResultMapHavingResultAndAssociation">
         SELECT * FROM person
     </select>
 </mapper>

@@ -51,8 +51,16 @@ public class PersonRepositoryTests {
 
 	@Test
 	@Ignore
-	public void testFindAllComplexPersonsWithResultMapAndAssociation() {
-		List<ComplexPerson> persons = personRepository.findAllComplexPersonsWithResultMapAndAssociation();
+	public void testFindAllComplexPersonsWithResultMapHavingIdAndAssociation() {
+		List<ComplexPerson> persons = personRepository.findAllComplexPersonsWithResultMapHavingIdAndAssociation();
+		System.out.println(persons);
+		assertThat(persons.size(), is(2));
+	}
+
+	@Test
+	@Ignore
+	public void testFindAllComplexPersonsWithResultMapHavingResultAndAssociation() {
+		List<ComplexPerson> persons = personRepository.findAllComplexPersonsWithResultMapHavingResultAndAssociation();
 		System.out.println(persons);
 		// Should work?
 //		assertThat(persons.size(), is(2));
