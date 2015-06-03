@@ -29,6 +29,7 @@ public class HomeControllerTests {
 	public void test() {
 		String response = restTemplate.getForObject(
 				"http://localhost:{serverPort}/", String.class, serverPort);
+		System.out.println(response);
 		assertThat(response, containsString("Johnny"));
 	}
 
