@@ -1,6 +1,7 @@
 package learningtest.com.fasterxml.jackson.databind;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,18 +20,28 @@ public class ObjectMapperTests {
 		StringWriter sw = new StringWriter();
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(sw, new Foo("test"));
-		assertThat(sw.toString(), is("{\"bar\":\"test\"}"));
+		assertThat(sw.toString(), is("{\"barBar\":\"test\"}"));
+	}
+
+	@Test
+	public void testWriteValueWithPropertyNamingStrategy() throws IOException {
+		StringWriter sw = new StringWriter();
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setPropertyNamingStrategy(
+				PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
+		mapper.writeValue(sw, new Foo("test"));
+		assertThat(sw.toString(), is("{\"bar_bar\":\"test\"}"));
 	}
 	
 	static class Foo {
-		private final String bar;
+		private final String barBar;
 
-		Foo(String bar) {
-			this.bar = bar;
+		Foo(String barBar) {
+			this.barBar = barBar;
 		}
 
-		public String getBar() {
-			return bar;
+		public String getBarBar() {
+			return barBar;
 		}
 	}
 	
