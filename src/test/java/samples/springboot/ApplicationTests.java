@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Arrays;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsSame.sameInstance;
 
@@ -29,6 +30,8 @@ public class ApplicationTests {
 
 		assertThat(myAppProperties.getClazz(), is(sameInstance(String.class)));
 		assertThat(myAppProperties.getClasses(), is(Arrays.asList(String.class, Integer.class)));
+		
+		assertThat(myAppProperties.getStrings(), is(new String[] {"abc", "def"}));
 	}
 
 }
