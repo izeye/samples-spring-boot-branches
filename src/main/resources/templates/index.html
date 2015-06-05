@@ -10,3 +10,10 @@
 <th:block th:text="${name}"></th:block>
 
 [<th:block th:text="${age}"></th:block>]
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var name = /*[[${name}]]*/ null;
+    var age = /*[[${age}]]*/ null;
+/*]]>*/
+</script>
