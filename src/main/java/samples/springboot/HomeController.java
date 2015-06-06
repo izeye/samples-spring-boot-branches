@@ -15,6 +15,7 @@ public class HomeController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("name", "Johnny");
+		model.addAttribute("html", "<html></html>");
 		return "index";
 	}
 
