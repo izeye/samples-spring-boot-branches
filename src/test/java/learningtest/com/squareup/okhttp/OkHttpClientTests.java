@@ -2,7 +2,6 @@ package learningtest.com.squareup.okhttp;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import org.junit.Before;
 import org.junit.Test;
