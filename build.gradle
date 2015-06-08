@@ -4,11 +4,13 @@ buildscript {
         maven { url "http://repo.spring.io/snapshot" }
         maven { url "http://repo.spring.io/libs-milestone" }
         maven { url "http://repo.spring.io/libs-release" }
+        maven { url "http://repo.spring.io/plugins-release" }
         mavenLocal()
     }
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE")
+        classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
         classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
     }
 }
@@ -17,6 +19,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'propdeps'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
@@ -37,11 +40,13 @@ repositories {
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
     compile("commons-io:commons-io:2.4")
     compile("org.apache.commons:commons-lang3:3.3.2")
     compile("com.squareup.okhttp:okhttp:2.4.0")
+    provided("org.projectlombok:lombok:1.16.4")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
