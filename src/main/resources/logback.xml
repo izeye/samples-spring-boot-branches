@@ -18,6 +18,8 @@
         </encoder>
     </appender>
     
+    <appender name="MY_CONSOLE" class="samples.springboot.support.logging.logback.appender.MyConsoleAppender" />
+    
     <root level="DEBUG">
         <if condition='!property("spring.profiles.active").contains("production")'>
             <then>
@@ -25,5 +27,6 @@
             </then>
         </if>
         <appender-ref ref="FILE" />
+        <appender-ref ref="MY_CONSOLE" />
     </root>
 </configuration>
