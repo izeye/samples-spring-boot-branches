@@ -18,7 +18,7 @@ import static org.hamcrest.core.StringStartsWith.startsWith;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class CustomerRepositorTests {
+public class CustomerRepositoryTests {
 
 	@Autowired
 	CustomerRepository repository;
