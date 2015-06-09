@@ -46,6 +46,19 @@ public class ApplicationTests {
 	}
 	
 	@Test
+	public void testSort() {
+		String url = "http://localhost:{port}/api/customers?sort=firstName,desc";
+
+		ResponseEntity<PagedResources<Customer>> responseEntity = this.restTemplate.exchange(
+				url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<PagedResources<Customer>>() {},
+				port);
+		PagedResources<Customer> resources = responseEntity.getBody();
+		List<Customer> customers = new ArrayList(resources.getContent());
+		customers.forEach(System.out::println);
+	}
+	
+	@Test
 	public void testFindByLastNameNotLike() {
 		String url = "http://localhost:{port}/api/customers/search/findByLastNameNotLike?lastName={lastName}";
 		String lastName = "B%";
