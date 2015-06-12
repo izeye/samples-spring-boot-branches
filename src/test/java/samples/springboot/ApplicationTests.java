@@ -14,6 +14,12 @@ public class ApplicationTests {
 
 	@Test
 	public void test() {
+		// To test JMX.
+//		try {
+//			Thread.sleep(Long.MAX_VALUE);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }
