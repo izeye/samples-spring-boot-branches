@@ -1,13 +1,9 @@
 package samples.springboot.config;
 
 import net.sf.ehcache.management.ManagementService;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
-import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jmx.support.MBeanServerFactoryBean;
 
 import javax.management.MBeanServer;
@@ -18,18 +14,6 @@ import javax.management.MBeanServer;
 @Configuration
 @EnableCaching
 public class CacheConfig {
-	
-	@Bean
-	public CacheManager cacheManager(net.sf.ehcache.CacheManager cacheManager) {
-		return new EhCacheCacheManager(cacheManager);
-	}
-
-	@Bean
-	public EhCacheManagerFactoryBean ehcache() {
-		EhCacheManagerFactoryBean ehCacheManagerFactoryBean = new EhCacheManagerFactoryBean();
-		ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("ehcache/ehcache.xml"));
-		return ehCacheManagerFactoryBean;
-	}
 	
 	@Bean
 	public MBeanServerFactoryBean mBeanServer() {
