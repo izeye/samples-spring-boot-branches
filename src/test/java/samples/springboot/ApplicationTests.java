@@ -31,7 +31,6 @@ public class ApplicationTests {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 }
