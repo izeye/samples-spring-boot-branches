@@ -9,6 +9,9 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private int age;
+	
+	public Person() {
+	}
 
 	public Person(Long id, String firstName, String lastName, int age) {
 		this.id = id;

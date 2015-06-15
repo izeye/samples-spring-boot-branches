@@ -1,8 +1,8 @@
 buildscript {
     repositories {
         mavenLocal()
-        jcenter()
         maven { url "http://repo.spring.io/snapshot" }
+        jcenter()
         maven { url "http://repo.spring.io/libs-milestone" }
         maven { url "http://repo.spring.io/libs-release" }
     }
@@ -31,8 +31,8 @@ targetCompatibility = 1.8
 
 repositories {
     mavenLocal()
-    jcenter()
     maven { url "http://repo.spring.io/snapshot" }
+    jcenter()
     maven { url "http://repo.spring.io/libs-milestone" }
     maven { url "http://repo.spring.io/libs-release" }
 }
