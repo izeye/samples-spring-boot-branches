@@ -21,7 +21,7 @@ public class ApplicationTests {
 
 	@After
 	public void tearDown() {
-		context.close();
+		this.context.close();
 	}
 
 	@Test

@@ -28,7 +28,7 @@ public class PersonRepositoryTests {
 
 	@After
 	public void tearDown() {
-		context.close();
+		this.context.close();
 	}
 	
 	@Autowired
