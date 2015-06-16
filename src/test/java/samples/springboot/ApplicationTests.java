@@ -23,8 +23,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.hamcrest.core.StringStartsWith.startsWith;
 
 /**
@@ -43,6 +45,23 @@ public class ApplicationTests {
 	@Before
 	public void setUp() {
 		this.restTemplate = getRestTemplate();
+	}
+	
+	@Test
+	public void testPostAndGet() {
+		String url = "http://localhost:{port}/api/customers";
+		Customer customer = new Customer("Johnny", "Lim");
+		
+		String response = this.restTemplate.postForObject(url, customer, String.class, port);
+		assertThat(response, is(nullValue()));
+
+		ResponseEntity<PagedResources<Customer>> responseEntity = this.restTemplate.exchange(
+				url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<PagedResources<Customer>>() {},
+				port);
+		PagedResources<Customer> resources = responseEntity.getBody();
+		List<Customer> customers = new ArrayList(resources.getContent());
+		customers.forEach(System.out::println);
 	}
 	
 	@Test
