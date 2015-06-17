@@ -44,6 +44,11 @@ dependencies {
     compile("com.squareup.okhttp:okhttp:2.4.0")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    
+    testCompile("net.sourceforge.htmlunit:htmlunit:2.17")
+    testCompile("xml-apis:xml-apis:1.4.01")
+    testCompile("org.apache.httpcomponents:httpclient:4.4.1")
+    testCompile("org.apache.httpcomponents:httpmime:4.4.1")
 }
 
 jacocoTestReport {
