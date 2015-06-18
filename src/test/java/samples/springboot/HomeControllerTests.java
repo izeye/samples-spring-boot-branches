@@ -17,10 +17,10 @@ import static org.hamcrest.core.StringContains.containsString;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest
+@WebIntegrationTest(randomPort = true)
 public class HomeControllerTests {
 
-	@Value("${server.port}")
+	@Value("${local.server.port}")
 	int serverPort;
 
 	RestTemplate restTemplate = new TestRestTemplate();
