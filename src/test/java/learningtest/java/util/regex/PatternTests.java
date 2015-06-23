@@ -15,10 +15,10 @@ public class PatternTests {
 	
 	@Test
 	public void test() {
-		String expected = "http://localhost/persons/search/name=John&age=35";
+		String expected = "http://localhost/persons/search/name=John&age=35&country=KR";
 		
-		String url = "http://localhost/persons/search/name=Johnny&age=35";
-		Pattern pattern = Pattern.compile("name=(.+)&");
+		String url = "http://localhost/persons/search/name=Johnny&age=35&country=KR";
+		Pattern pattern = Pattern.compile("name=(.+?)&");
 		Matcher matcher = pattern.matcher(url);
 		matcher.find();
 		// NOTE: `0` will be the whole matched string.
