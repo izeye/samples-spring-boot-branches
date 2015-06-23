@@ -21,6 +21,7 @@ public class PatternTests {
 		Pattern pattern = Pattern.compile("name=(.+)&");
 		Matcher matcher = pattern.matcher(url);
 		matcher.find();
+		// NOTE: `0` will be the whole matched string.
 		String name = matcher.group(1);
 		String newName = "John";
 		assertThat(url.replace(name, newName), is(expected));
