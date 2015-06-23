@@ -15,16 +15,22 @@ public class PatternTests {
 	
 	@Test
 	public void test() {
-		String expected = "http://localhost/persons/search/name=John&age=35&country=KR";
+		String expected = "http://localhost/persons/search/name=&name=John&age=35&country=KR";
 		
-		String url = "http://localhost/persons/search/name=Johnny&age=35&country=KR";
-		Pattern pattern = Pattern.compile("name=(.+?)&");
-		Matcher matcher = pattern.matcher(url);
-		matcher.find();
-		// NOTE: `0` will be the whole matched string.
-		String name = matcher.group(1);
+		String url = "http://localhost/persons/search/name=&name=John&age=35&country=KR";
 		String newName = "John";
-		assertThat(url.replace(name, newName), is(expected));
+		
+		Pattern pattern = Pattern.compile("name=(.*?)&");
+		Matcher matcher = pattern.matcher(url);
+		while (matcher.find()) {
+			// NOTE: `0` will be the whole matched string.
+			String name = matcher.group(1);
+			if (name.isEmpty()) {
+				continue;
+			}
+			url = url.replace(name, newName);
+		}
+		assertThat(url, is(expected));
 	}
 	
 }
