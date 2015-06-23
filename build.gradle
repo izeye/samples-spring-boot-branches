@@ -44,6 +44,7 @@ dependencies {
 
     compile("commons-io:commons-io:2.4")
     compile("org.apache.commons:commons-lang3:3.3.2")
+    compile("commons-codec:commons-codec:1.10")
     compile("com.squareup.okhttp:okhttp:2.4.0")
 
     provided("org.projectlombok:lombok:1.16.2")
