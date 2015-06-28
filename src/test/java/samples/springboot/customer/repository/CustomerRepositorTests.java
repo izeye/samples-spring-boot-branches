@@ -1,10 +1,13 @@
-package samples.springboot;
+package samples.springboot.customer.repository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import samples.springboot.Application;
+import samples.springboot.customer.domain.Customer;
+import samples.springboot.server.CustomerRepository;
 
 import java.util.List;
 

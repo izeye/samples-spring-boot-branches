@@ -1,4 +1,4 @@
-package samples.springboot;
+package samples.springboot.customer.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

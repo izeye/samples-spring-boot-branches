@@ -1,6 +1,7 @@
-package samples.springboot;
+package samples.springboot.server;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import samples.springboot.customer.domain.Customer;
 
 import java.util.List;
 
