@@ -38,16 +38,17 @@ public class GreetingControllerTests {
 	String password;
 
 	RestTemplate restTemplate = new RestTemplate();
+	
 	TestRestTemplate testRestTemplate;
 
 	@Before
 	public void setUp() {
-		testRestTemplate = new TestRestTemplate(username, password);
+		this.testRestTemplate = new TestRestTemplate(this.username, this.password);
 	}
 
 	@Test
 	public void testWithRestTemplate() throws UnsupportedEncodingException {
-		String credentials = username + ":" + password;
+		String credentials = this.username + ":" + this.password;
 		String base64EncodedCredentials = Base64.encode(credentials.getBytes("UTF-8"));
 
 		String authorizationHeaderName = "Authorization";
@@ -56,25 +57,25 @@ public class GreetingControllerTests {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.set(authorizationHeaderName, authorizationHeaderValue);
 
-		HttpEntity<Void> request = new HttpEntity<Void>(httpHeaders);
-		ResponseEntity<Greeting> response = restTemplate.exchange(
-				"http://localhost:{port}/greeting", HttpMethod.GET, request, Greeting.class, port);
+		HttpEntity<Void> request = new HttpEntity<>(httpHeaders);
+		ResponseEntity<Greeting> response = this.restTemplate.exchange(
+				"http://localhost:{port}/greeting", HttpMethod.GET, request, Greeting.class, this.port);
 		assertThat(response.getBody().getContent(), is("Hello, World!"));
 
-		response = restTemplate.exchange(
+		response = this.restTemplate.exchange(
 				"http://localhost:{port}/greeting?name=Johnny",
-				HttpMethod.GET, request, Greeting.class, port);
+				HttpMethod.GET, request, Greeting.class, this.port);
 		assertThat(response.getBody().getContent(), is("Hello, Johnny!"));
 	}
 
 	@Test
-	public void testWithTestRestTemplate() throws UnsupportedEncodingException {
-		Greeting greeting = testRestTemplate.getForObject(
-				"http://localhost:{port}/greeting", Greeting.class, port);
+	public void testWithTestRestTemplate() {
+		Greeting greeting = this.testRestTemplate.getForObject(
+				"http://localhost:{port}/greeting", Greeting.class, this.port);
 		assertThat(greeting.getContent(), is("Hello, World!"));
 
-		greeting = testRestTemplate.getForObject(
-				"http://localhost:{port}/greeting?name=Johnny", Greeting.class, port);
+		greeting = this.testRestTemplate.getForObject(
+				"http://localhost:{port}/greeting?name=Johnny", Greeting.class, this.port);
 		assertThat(greeting.getContent(), is("Hello, Johnny!"));
 	}
 
