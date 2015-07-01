@@ -30,8 +30,8 @@ public class BasicAuthRestTemplate extends RestTemplate {
 			return;
 		}
 		List<ClientHttpRequestInterceptor> interceptors = Collections
-				.<ClientHttpRequestInterceptor> singletonList(new BasicAuthorizationInterceptor(
-						username, password));
+				.<ClientHttpRequestInterceptor> singletonList(
+						new BasicAuthorizationInterceptor(username, password));
 		setRequestFactory(new InterceptingClientHttpRequestFactory(getRequestFactory(),
 				interceptors));
 	}
@@ -50,7 +50,7 @@ public class BasicAuthRestTemplate extends RestTemplate {
 
 		@Override
 		public ClientHttpResponse intercept(HttpRequest request, byte[] body,
-											ClientHttpRequestExecution execution) throws IOException {
+				ClientHttpRequestExecution execution) throws IOException {
 			byte[] token = Base64.getEncoder().encode(
 					(this.username + ":" + this.password).getBytes());
 			request.getHeaders().add("Authorization", "Basic " + new String(token));
