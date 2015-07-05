@@ -47,6 +47,8 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    
+    compile("io.dropwizard.metrics:metrics-core")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("com.jayway.jsonpath:json-path:2.0.0")
