@@ -6,7 +6,7 @@ import org.springframework.boot.actuate.system.ApplicationPidFileWriter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.util.ResourceUtils;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +17,9 @@ import java.io.FileInputStream;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	private final Yaml yaml = new Yaml(new Constructor(Person.class));
+//	private final Yaml yaml = new Yaml(new Constructor(Person.class));
+	private final Yaml yaml = new Yaml(
+			new CustomClassLoaderConstructor(Person.class, Person.class.getClassLoader()));
 
 	@Override
 	public void run(String... args) throws Exception {
