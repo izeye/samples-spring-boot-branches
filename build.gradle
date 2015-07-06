@@ -41,6 +41,7 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-devtools")
 
     compile("commons-io:commons-io:2.4")
     compile("org.apache.commons:commons-lang3:3.3.2")
