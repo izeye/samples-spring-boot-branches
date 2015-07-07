@@ -34,4 +34,26 @@ public class StringTests {
 		assertThat(message.replaceAll("<!--.*?-->", ""), is(expected));
 	}
 	
+	@Test
+	public void testSplit() {
+		String delimiterRegEx = "[&=]";
+		testDelimiterRegEx(delimiterRegEx);
+		
+		delimiterRegEx = "&|=";
+		testDelimiterRegEx(delimiterRegEx);
+	}
+
+	private void testDelimiterRegEx(String delimiterRegEx) {
+		String parameters = "id=1&name=Johnny&age=35";
+
+		String[] split = parameters.split(delimiterRegEx);
+
+		assertThat(split[0], is("id"));
+		assertThat(split[1], is("1"));
+		assertThat(split[2], is("name"));
+		assertThat(split[3], is("Johnny"));
+		assertThat(split[4], is("age"));
+		assertThat(split[5], is("35"));
+	}
+
 }
