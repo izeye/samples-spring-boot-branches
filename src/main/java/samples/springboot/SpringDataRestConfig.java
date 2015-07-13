@@ -1,18 +1,23 @@
 package samples.springboot;
 
-import org.springframework.boot.autoconfigure.data.rest.SpringBootRepositoryRestMvcConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Created by izeye on 15. 2. 27..
  */
 @Configuration
-public class SpringDataRestConfig extends SpringBootRepositoryRestMvcConfiguration {
+public class SpringDataRestConfig {
 
-	@Override
-	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-		config.exposeIdsFor(Customer.class);
+	@Autowired
+	RepositoryRestConfiguration repositoryRestConfiguration;
+
+	@PostConstruct
+	public void init() {
+		repositoryRestConfiguration.exposeIdsFor(Customer.class);
 	}
 
 }
