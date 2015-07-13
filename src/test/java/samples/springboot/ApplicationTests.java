@@ -52,8 +52,7 @@ public class ApplicationTests {
 		String url = "http://localhost:{port}/api/customers";
 		Customer customer = new Customer("Johnny", "Lim");
 		
-		String response = this.restTemplate.postForObject(url, customer, String.class, port);
-		assertThat(response, is(nullValue()));
+		this.restTemplate.postForObject(url, customer, Void.class, port);
 
 		ResponseEntity<PagedResources<Customer>> responseEntity = this.restTemplate.exchange(
 				url, HttpMethod.GET, null,
