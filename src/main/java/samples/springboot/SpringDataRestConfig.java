@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 public class SpringDataRestConfig {
 
 	@Autowired
-	RepositoryRestConfiguration repositoryRestConfiguration;
+	private RepositoryRestConfiguration repositoryRestConfiguration;
 
 	@PostConstruct
 	public void init() {
