@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
 	public static void main(String[] args) {
+		System.setProperty("spring.profiles.active", "server");
+		
 		SpringApplication application = new SpringApplication(Application.class);
 		application.addListeners(new ApplicationPidFileWriter());
 		application.run(args);

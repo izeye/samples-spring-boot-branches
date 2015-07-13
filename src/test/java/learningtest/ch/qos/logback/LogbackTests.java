@@ -3,7 +3,6 @@ package learningtest.ch.qos.logback;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +12,13 @@ import org.slf4j.LoggerFactory;
  */
 public class LogbackTests {
 
-	@Ignore
 	@Test
 	public void test() {
 		String configFilename = "src/test/resources/logback-client.xml";
 		configLogback(configFilename);
 
 		Logger logger = LoggerFactory.getLogger(getClass());
-		logger.debug("Hello, world!");
+		logger.info("Hello, world!");
 
 		try {
 			Thread.sleep(1000);
@@ -29,7 +27,6 @@ public class LogbackTests {
 		}
 	}
 	
-	@Ignore
 	@Test
 	public void runServerSocketReceiver() {
 		String configFilename = "src/test/resources/logback-server.xml";
