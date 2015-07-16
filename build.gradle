@@ -42,6 +42,9 @@ dependencies {
 
     compile("net.sourceforge.nekohtml:nekohtml")
 
+    compile("org.webjars:webjars-locator:0.26")
+    compile("org.webjars:jquery:2.1.4")
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
