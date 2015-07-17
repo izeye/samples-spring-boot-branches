@@ -1,0 +1,7 @@
+<script>
+	$$("*");
+</script>
+
+#foreach($i in [1..10])
+	<p>Hello, world!</p>
+#end
