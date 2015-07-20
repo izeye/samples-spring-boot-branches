@@ -41,8 +41,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-hateoas")
+    
+    compile("org.springframework.data:spring-data-rest-hal-browser")
 
     compile("net.sourceforge.nekohtml:nekohtml")
+//    compile("org.webjars:hal-browser")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
