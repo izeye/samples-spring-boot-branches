@@ -34,7 +34,7 @@ public class IPAddressUtilTests {
 		assertFalse(IPAddressUtil.isIPv4LiteralAddress("::1"));
 		
 		thrown.expect(NullPointerException.class);
-		assertFalse(IPAddressUtil.isIPv4LiteralAddress(null));
+		IPAddressUtil.isIPv4LiteralAddress(null);
 	}
 	
 	@Test
