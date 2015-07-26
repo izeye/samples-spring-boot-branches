@@ -12,8 +12,11 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.M2")
         classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
         classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
-        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.2")
     }
+}
+
+plugins {
+    id "org.asciidoctor.convert" version "1.5.2"
 }
 
 apply plugin: 'java'
@@ -23,7 +26,6 @@ apply plugin: 'spring-boot'
 apply plugin: 'propdeps'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
-apply plugin: 'org.asciidoctor.convert'
 
 jar {
     baseName = 'samples-spring-boot-branches'
