@@ -1,0 +1,6 @@
+include::{snippets}/customers/curl-request.adoc[]
+include::{snippets}/customers/http-request.adoc[]
+include::{snippets}/customers/http-response.adoc[]
+include::{snippets}/customers/query-parameters.adoc[]
+include::{snippets}/customers/links.adoc[]
+include::{snippets}/customers/response-fields.adoc[]

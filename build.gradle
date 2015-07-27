@@ -14,6 +14,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.asciidoctor.convert" version "1.5.2"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -24,6 +28,22 @@ apply plugin: 'com.github.kt3k.coveralls'
 jar {
     baseName = 'samples-spring-boot-branches'
     version = '1.0.0'
+}
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+test {
+    systemProperty 'org.springframework.restdocs.outputDir', snippetsDir
+    outputs.dir snippetsDir
+}
+
+asciidoctor {
+    sourceDir 'src/main/asciidoc'
+    attributes 'snippets': snippetsDir
+    inputs.dir snippetsDir
+    dependsOn test
 }
 
 sourceCompatibility = 1.8
@@ -45,6 +65,7 @@ dependencies {
     compile("com.h2database:h2")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.restdocs:spring-restdocs:1.0.0.BUILD-SNAPSHOT")
 }
 
 jacocoTestReport {
