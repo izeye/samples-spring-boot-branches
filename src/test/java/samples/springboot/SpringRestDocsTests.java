@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.springframework.restdocs.RestDocumentation.document;
 import static org.springframework.restdocs.RestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
@@ -19,6 +21,7 @@ import static org.springframework.restdocs.hypermedia.LinkExtractors.halLinks;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -51,6 +54,7 @@ public class SpringRestDocsTests {
 	public void api() throws Exception {
 		this.mockMvc.perform(get("/api").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
+				.andExpect(jsonPath("_links.customers", is(notNullValue())))
 				.andDo(document("api").withLinks(halLinks(),
 						linkWithRel("customers").description("Link to the customers"),
 						linkWithRel("profile").description("Link to the profile")));

@@ -66,6 +66,7 @@ dependencies {
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.springframework.restdocs:spring-restdocs:1.0.0.BUILD-SNAPSHOT")
+    testCompile("com.jayway.jsonpath:json-path")
 }
 
 jacocoTestReport {
