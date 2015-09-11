@@ -27,6 +27,8 @@ public class SampleAsyncServiceTests {
 
 	@Test
 	public void echoWithDelayInMillis() throws ExecutionException, InterruptedException {
+		System.out.println(Thread.currentThread());
+		
 		String text = "Johnny";
 		long delayInMillis = 1000;
 
@@ -41,6 +43,8 @@ public class SampleAsyncServiceTests {
 	@Test
 	public void invokeEchoWithDelayInMillisInternally()
 			throws ExecutionException, InterruptedException {
+		System.out.println(Thread.currentThread());
+		
 		String text = "Johnny";
 		long delayInMillis = 1000;
 

@@ -15,6 +15,8 @@ public class DefaultSampleAsyncService implements SampleAsyncService {
 	@Override
 	@Async
 	public Future<String> echoWithDelayInMillis(String text, long delayInMillis) {
+		System.out.println(Thread.currentThread());
+		
 		try {
 			Thread.sleep(delayInMillis);
 		} catch (InterruptedException e) {
